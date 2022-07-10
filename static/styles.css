@@ -33,8 +33,17 @@ button{
     height: 250px;
     border: 0;
 }
-#header{
-    margin: 2%;
+
+#headerdiv{
+    color: antiquewhite;
+    font-size: 30;
+    margin: auto;
+    background-color: #131313;
+    height: 6vh;
+    font-size: large;
+    font-weight: bold;
     text-align: center;
-    font-size: xx-large;
+    vertical-align: middle;
+    line-height: 6vh;
+    align-self: center;
 }
