@@ -1,0 +1,40 @@
+body{
+    color:antiquewhite;
+}
+div{
+    justify-items: center;
+}
+#alert{
+    margin: auto;
+    width: 500px;
+    height: 5vh;
+    color: antiquewhite;
+    border-radius: 15px;
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 5vh;
+    align-self: center;
+}
+.lost{
+    background-color: #4d0606;
+}
+.won{
+    background-color: #034d0a;
+}
+.tied{
+    background-color: #947e05;
+}
+button{
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 250px;
+    height: 250px;
+    border: 0;
+}
+#header{
+    margin: 2%;
+    text-align: center;
+    font-size: xx-large;
+}
