@@ -26,6 +26,9 @@ div{
 .tied{
     background-color: #947e05;
 }
+.clear{
+    background-color: #085d96;
+}
 button{
     background-repeat: no-repeat;
     background-size: cover;
@@ -40,10 +43,39 @@ button{
     margin: auto;
     background-color: #131313;
     height: 6vh;
-    font-size: large;
+    font-size: xx-large;
     font-weight: bold;
     text-align: center;
     vertical-align: middle;
     line-height: 6vh;
     align-self: center;
+}
+
+#line{
+    text-align:center;
+    position: relative;
+}
+
+#points{
+    color: antiquewhite;
+    justify-self: left;
+    position: absolute;
+    top: 30%;
+    margin-left: 3%;
+    font-size: x-large;
+    font-weight:bold;
+    text-align: left;
+}
+
+#clear{
+    height: 10%;
+    width: 15%;
+    margin-top: 5%;
+    background-color: #1a1a1a;
+    border: 0;
+    color:antiquewhite;
+    font-weight:bold;
+}
+#clear:hover{
+    background-color: #111111;
 }

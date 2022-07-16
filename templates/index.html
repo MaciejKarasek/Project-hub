@@ -5,11 +5,21 @@
 {% endblock %}
 
 {% block main %}
-    <div>
+    <div id="line">
+        <div id="points">
+            <div>Player: {{player}}</div>
+            <div>Bot: {{bot}}</div>
+        </div>
         <form method="post">
             <button type="submit" style="background: url(static/Rock.png)" name="button" value="R"></button>
             <button type="submit" style="background: url(static/paper.png)" name="button" value="P"></button>
             <button type="submit" style="background: url(static/scissors.png)" name="button" value="S"></button>
+        </form>
+    </div>
+    <br>
+    <div>
+        <form method="post">
+            <button id="clear" class="btn btn-secondary btn-lg" type="submit" name="button" value="clear">CLEAR POINTS</button>
         </form>
     </div>
 {% endblock %}
