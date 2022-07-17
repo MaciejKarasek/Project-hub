@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Rock Paper Scissors
+{% endblock %}
+
+{% block head %}
+    <div id="menudiv">
+        <div id="headertext">ROCK PAPER SCISSORS 
+        <button class="btnmenu btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="background: url(static/menu.png)"></button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color:#212529;">
+        <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel"><a href="/">PROJECTS</a></h5>
+        <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+    <div class="offcanvas-body">
+        <div class="pick"><a class="option" href="/rps">Rock Paper Scissors</a></div>
+        <div><a class="option" href="/merge">Merge sort</a></div>
+    </div>
+    </div>
+    <div id="line">
+        <div id="points">
+            <div>Player: {{player}}</div>
+            <div>Bot: {{bot}}</div>
+        </div>
+        <form method="post">
+            <button type="submit" style="background: url(static/Rock.png)" name="button" value="R"></button>
+            <button type="submit" style="background: url(static/paper.png)" name="button" value="P"></button>
+            <button type="submit" style="background: url(static/scissors.png)" name="button" value="S"></button>
+        </form>
+    </div>
+    <br>
+    <div>
+        <form method="post">
+            <button id="clear" class="btn btn-secondary btn-lg" type="submit" name="button" value="clear">CLEAR POINTS</button>
+        </form>
+    </div>
+{% endblock %}

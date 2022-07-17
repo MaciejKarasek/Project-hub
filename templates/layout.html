@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
     </head>
     <body style="background-color:#212529;">
-        <div id="headerdiv">ROCK PAPER SCISSORS</div>
+        <div id="headerdiv">{% block head %}{% endblock %}</div>
         <main class="container-fluid py-5 text-center">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
@@ -24,4 +24,7 @@
         {% block main %}{% endblock %}
         </main>
     </body>
+    <footer class = "footer">
+      <a href="https://github.com/MaciejKarasek"><img src="/static/github.png" id="Github" style="height: 56px; width: 56px;"/> My GitHub profile</a>
+    </footer>
 </html>

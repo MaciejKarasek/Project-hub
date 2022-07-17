@@ -9,16 +9,22 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route('/', methods=["GET", "POST"])
 def index():
+    return render_template("index.html")
+
+@app.route('/rps', methods=["GET", "POST"])
+def rps():
     if request.method == "POST":
         pchoice = request.form['button']
         if pchoice == "clear":
             session.clear()
             flash("Points cleared", 'clear')
-            return redirect("/")
+            session['B'] = 0
+            session['P'] = 0
+            return redirect("/rps")
 
         if not pchoice in ['R', 'P', 'S']:
             flash("WRONG INPUT!", 'lost')
-            return redirect("/")
+            return redirect("/rps")
         else:
             status, bchoice = RPS(pchoice)
             P = int(session.get('P'))
@@ -31,9 +37,13 @@ def index():
             resulttxt = {0:'lost', 1:'won', 2:'tied'}[status]
             result = "Bot choice is {}, you {}!".format(bottxt, resulttxt)
             flash(result, resulttxt)
-            return redirect("/")
+            return redirect("/rps")
     else:
         if not session.get('B'):
             session['B'] = 0
             session['P'] = 0
-        return render_template("index.html", bot = session.get('B'), player = session.get('P'))
+        return render_template("rps.html", bot = session.get('B'), player = session.get('P'))
+
+@app.route('/merge', methods=["GET", "POST"])
+def merge():
+    return render_template("merge.html")
