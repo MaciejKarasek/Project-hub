@@ -8,12 +8,12 @@
 {% endblock %}
 {% block main %}
     <h1 class="headers">Site that contains my projects made with python and flask framework</h1>
-    <div>
+    <div class="index-menu">
         <form action="/rps">
-        <button type="submit">RPS</button>
+        <button type="submit" class="btn-index" style="background: url(static/rps.png)"></button>
         </form>
         <form action="/merge">
-            <button type="submit">Merge</button>
-            </form>
+        <button type="submit" class="btn-index" style="background: url(static/merge.png)"></button>
+        </form>
     </div>
 {% endblock %}

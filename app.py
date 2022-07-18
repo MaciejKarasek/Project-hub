@@ -9,6 +9,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route('/', methods=["GET", "POST"])
 def index():
+    session.clear()
     return render_template("index.html")
 
 @app.route('/rps', methods=["GET", "POST"])
@@ -46,4 +47,5 @@ def rps():
 
 @app.route('/merge', methods=["GET", "POST"])
 def merge():
+    session.clear()
     return render_template("merge.html")

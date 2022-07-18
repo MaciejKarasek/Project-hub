@@ -136,3 +136,23 @@ a:hover{
     display: flex;
     font-size: x-large;
 }
+
+.btn-index{
+    filter: blur(2px);
+    box-shadow: 0 0 0 #000000;
+    transition: 0.5s ease;
+    margin: 5px;
+}
+
+.btn-index:hover{
+    filter: blur(0);
+    box-shadow: 0 0 15px #ff0055;
+    box-sizing:inherit;
+    transition: 0.5s ease;
+    margin: 5px;
+}
+
+.index-menu{
+    display: inline-flex;
+    align-content: center;
+}
