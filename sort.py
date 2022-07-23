@@ -1,4 +1,6 @@
 from numpy import random
+import time
+import math
 
 def mergesort(arr):
     if len(arr) > 1:
@@ -68,9 +70,29 @@ def part(arr, low, high):
 
     return n + 1
 
+def select(arr):
+    for i in range(len(arr) - 1):
+        min = arr[i]
+        x = i
+        for j in range(i + 1,len(arr)):
+            if arr[j] < min:
+                x = j
+                min = arr[j]
+
+        if x != i:
+            arr[i], arr[x] = arr[x], arr[i]
+
 if __name__ == "__main__":
     arr = random.randint(1, 10000, 10000)
-    #arr = [5, 3, 4, 2, 1]
+    #arr = [5, 3, 4, 2, 1, 30, 65, 24, 63, 88, 535, 346, 346536]
     print(arr)
-    quicksort(arr, 0, len(arr) - 1)
-    print(arr)
+    #quicksort(arr, 0, len(arr) - 1)
+    sum = 0
+    for i in range(5):
+        st = time.time()
+        insertsort(arr)
+        et = time.time()
+        sum += et - st
+    avgtime = sum / 5
+    timee ="{:.3f}".format(avgtime) 
+    print(timee)
