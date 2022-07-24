@@ -14,7 +14,6 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route('/', methods=["GET", "POST"])
 def index():
     session.clear()
-    session['algorithms'] = [['Insert sort',0], ['Merge sort',0], ['Select sort',0], ['Bubble sort',0], ['Quick sort',0]]
     return render_template("index.html")
 
 @app.route('/rps', methods=["GET", "POST"])
@@ -53,7 +52,6 @@ def rps():
 @app.route('/merge', methods=["GET", "POST"])
 def merge():
     if request.method == "POST":
-        session.pop('algorithms')
         n = int(request.form["slider"])
         if not isinstance(n, int):
             flash("WRONG INPUT", "lost")
@@ -85,10 +83,13 @@ def merge():
 
         algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
 
-        #algorithms = algorithms.sort(key = lambda x: x[1])
+        session['algorithms'] = algorithms
         print(algorithms)
-        session['alorithms'] = algorithms
         flash("SORTED", "won")
         return redirect("/merge")
-    return render_template("merge.html", algorithms = session.get('algorithms'))
+    
+    if session.get('algorithms'):
+        return render_template("merge.html", algorithms = session.get('algorithms'))
+    else:
+        return render_template("merge.html")
     

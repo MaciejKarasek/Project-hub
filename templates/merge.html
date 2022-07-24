@@ -5,7 +5,7 @@
 {% endblock %}
 {% block head %}
     <div id="menudiv">
-        <div id="headertext">MERGE SORT 
+        <div id="headertext">SORTING ALGORITHM COMPARISON
         <button class="btnmenu btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="background: url(static/menu.png)"></button>
         </div>
     </div>
@@ -29,7 +29,7 @@
         <br>
         <input type="submit" value="SORT!">
     </form>
-
+    {% if algorithms %}
     <table class="table table-dark">
         <thead>
             <tr>
@@ -37,9 +37,10 @@
             </tr>
         </thead>
         <tbody>
-            {% for algorithm in algorithms %}
-                <tr><td>{{algorithm.0}}</td><td>{{algorithm.2}}</td></tr>
-            {% endfor %}
+                {% for algorithm in algorithms %}
+                    <tr><td>{{algorithm.0}}</td><td>{{algorithm.1}}</td></tr>
+                {% endfor %}
         </tbody>
     </table>
+    {% endif %}
 {% endblock %}

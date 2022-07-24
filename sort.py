@@ -82,17 +82,8 @@ def select(arr):
             arr[i], arr[x] = arr[x], arr[i]
 
 if __name__ == "__main__":
-    arr = random.randint(1, 10000, 10000)
-    arr = [4,7,3,1,8]
-    print(arr)
-    #quicksort(arr, 0, len(arr) - 1)
-    sum = 0
-    for i in range(5):
-        st = time.time()
-        insertsort(arr)
-        et = time.time()
-        sum += et - st
-    avgtime = sum / 5
-    print(arr)
-    timee ="{:.3f}".format(avgtime) 
-    print(timee)
+    arr = random.randint(1, 5000, 5000)
+    #arr = [4,7,3,1,8,5432, 5623, 532 ,324 ,12 ,5, 32 ,52 ,43 ,42, 4,32, 5,32 ,532]
+    #print(arr)
+    quicksort(arr, 0, len(arr) - 1)
+    #print(arr)
