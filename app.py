@@ -49,13 +49,13 @@ def rps():
             session['P'] = 0
         return render_template("rps.html", bot = session.get('B'), player = session.get('P'))
 
-@app.route('/merge', methods=["GET", "POST"])
-def merge():
+@app.route('/sorting', methods=["GET", "POST"])
+def sorting():
     if request.method == "POST":
         n = int(request.form["slider"])
         if not isinstance(n, int):
             flash("WRONG INPUT", "lost")
-            return redirect("/merge")
+            return redirect("/sorting")
         arr = random.randint(1, n, n)
         st = time.time()
         sorted = sort.insertsort(arr.copy())
@@ -86,10 +86,10 @@ def merge():
         session['algorithms'] = algorithms
         print(algorithms)
         flash("SORTED", "won")
-        return redirect("/merge")
+        return redirect("/sorting")
     
     if session.get('algorithms'):
-        return render_template("merge.html", algorithms = session.get('algorithms'))
+        return render_template("sorting.html", algorithms = session.get('algorithms'))
     else:
-        return render_template("merge.html")
+        return render_template("sorting.html")
     

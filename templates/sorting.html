@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    PROJECTS
+{% endblock %}
+{% block head %}
+    <div id="menudiv">
+        <div id="headertext">SORTING ALGORITHM COMPARISON
+        <button class="btnmenu btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="background: url(static/menu.png)"></button>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color:#212529;">
+        <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel"><a href="/">PROJECTS</a></h5>
+        <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+    <div class="offcanvas-body">
+        <div><a class="option" href="/rps">Rock Paper Scissors</a></div>
+        <div class="pick"><a class="pick option" href="/sorting">Sorting algorithms</a></div>
+    </div>
+    </div>
+    <div>
+        <h2 id="demo" style="display:inline-block;"></h2> <h2 style="display:inline-block;">Numbers</h2>
+    </div>
+    <form method="post" action="">
+        <input type="range" min="2" max="10000" value="5000" name ='slider' class="slider" id="numbers">
+        <br>
+        <input type="submit" value="SORT!">
+    </form>
+    {% if algorithms %}
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Algorithm</th><th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+                {% for algorithm in algorithms %}
+                    <tr><td>{{algorithm.0}}</td><td>{{algorithm.1}}</td></tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
