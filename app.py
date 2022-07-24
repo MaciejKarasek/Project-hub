@@ -14,6 +14,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route('/', methods=["GET", "POST"])
 def index():
     session.clear()
+    session['algorithms'] = [['Insert sort',0], ['Merge sort',0], ['Select sort',0], ['Bubble sort',0], ['Quick sort',0]]
     return render_template("index.html")
 
 @app.route('/rps', methods=["GET", "POST"])
@@ -52,33 +53,34 @@ def rps():
 @app.route('/merge', methods=["GET", "POST"])
 def merge():
     if request.method == "POST":
+        session.pop('algorithms')
         n = int(request.form["slider"])
         if not isinstance(n, int):
             flash("WRONG INPUT", "lost")
             return redirect("/merge")
         arr = random.randint(1, n, n)
         st = time.time()
-        sorted = sort.insertsort(arr)
+        sorted = sort.insertsort(arr.copy())
         inserttime = time.time() - st
 
         arr = random.randint(1, n, n)
         st = time.time()
-        sorted = sort.mergesort(arr)
+        sorted = sort.mergesort(arr.copy())
         mergetime = time.time() - st
 
         arr = random.randint(1, n, n)
         st = time.time()
-        sorted = sort.select(arr)
+        sorted = sort.select(arr.copy())
         selecttime = time.time() - st
 
         arr = random.randint(1, n, n)
         st = time.time()
-        sorted = sort.bubblesort(arr)
+        sorted = sort.bubblesort(arr.copy())
         bubbletime = time.time() - st
 
         arr = random.randint(1, n, n)
         st = time.time()
-        sorted = sort.quicksort(arr, 0, len(arr) - 1)
+        sort.quicksort(arr, 0, len(arr) - 1)
         quicktime = time.time() - st
 
         algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
@@ -88,8 +90,5 @@ def merge():
         session['alorithms'] = algorithms
         flash("SORTED", "won")
         return redirect("/merge")
-    if not 'algorithms' in locals():
-        return render_template("merge.html")
-    else:
-        return render_template("merge.html", algorithms = session.get('algorithms'))
+    return render_template("merge.html", algorithms = session.get('algorithms'))
     
