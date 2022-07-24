@@ -201,3 +201,7 @@ a:hover{
   }
 
   .exp{visibility: hidden;}
+
+  .modal-content{
+    background-color: rgb(33, 37, 41);
+  }

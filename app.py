@@ -14,6 +14,7 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 @app.route('/', methods=["GET", "POST"])
 def index():
     session.clear()
+    session['val'] = 5000
     return render_template("index.html")
 
 @app.route('/rps', methods=["GET", "POST"])
@@ -22,6 +23,7 @@ def rps():
         pchoice = request.form['button']
         if pchoice == "clear":
             session.clear()
+            session['val'] = 5000
             flash("Points cleared", 'clear')
             session['B'] = 0
             session['P'] = 0
@@ -56,31 +58,30 @@ def sorting():
         if not isinstance(n, int):
             flash("WRONG INPUT", "lost")
             return redirect("/sorting")
+        session['val'] = n
         arr = random.randint(1, n, n)
+        unsorted = arr.copy()
         st = time.time()
         sorted = sort.insertsort(arr.copy())
         inserttime = time.time() - st
 
-        arr = random.randint(1, n, n)
         st = time.time()
         sorted = sort.mergesort(arr.copy())
         mergetime = time.time() - st
 
-        arr = random.randint(1, n, n)
         st = time.time()
         sorted = sort.select(arr.copy())
         selecttime = time.time() - st
 
-        arr = random.randint(1, n, n)
         st = time.time()
         sorted = sort.bubblesort(arr.copy())
         bubbletime = time.time() - st
 
-        arr = random.randint(1, n, n)
         st = time.time()
         sort.quicksort(arr, 0, len(arr) - 1)
         quicktime = time.time() - st
-
+        session['sorted'] = sorted
+        session['unsorted'] = unsorted
         algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
 
         session['algorithms'] = algorithms
@@ -89,7 +90,7 @@ def sorting():
         return redirect("/sorting")
     
     if session.get('algorithms'):
-        return render_template("sorting.html", algorithms = session.get('algorithms'))
+        return render_template("sorting.html", algorithms = session.get('algorithms'), val = session.get('val'), sorted = session.get('sorted'), unsorted = session.get('unsorted'))
     else:
-        return render_template("sorting.html")
+        return render_template("sorting.html", val = 5000)
     

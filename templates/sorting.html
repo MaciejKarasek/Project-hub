@@ -21,11 +21,12 @@
         <div class="pick"><a class="pick option" href="/sorting">Sorting algorithms</a></div>
     </div>
     </div>
+
     <div>
         <h2 id="demo" style="display:inline-block;"></h2> <h2 style="display:inline-block;">Numbers</h2>
     </div>
     <form method="post" action="" id="id">
-        <input type="range" min="2" max="10000" value="5000" name ='slider' class="slider" id="numbers">
+        <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
         <br>
         <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">SORT!</button>
         <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">SORT!</button>
@@ -40,9 +41,30 @@
         </thead>
         <tbody>
                 {% for algorithm in algorithms %}
-                    <tr><td>{{algorithm.0}}</td><td>{{algorithm.1}}</td></tr>
+                    <tr><td>{{algorithm.0}}</td><td>{{algorithm.1}} s</td></tr>
                 {% endfor %}
         </tbody>
     </table>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Unsorted values
+    </button>      
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Unsorted numbers</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table>
+                {% for number in unsorted %}
+                <tr><td>{{number}}</td></tr>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     {% endif %}
 {% endblock %}
