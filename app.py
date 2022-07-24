@@ -1,6 +1,10 @@
 from flask import Flask, redirect, render_template, request, flash, session
 from flask_session import Session
 from game import RPS
+from numpy import random
+import sort
+import time
+
 app = Flask(__name__)
 app.secret_key = 'aAbBcD'
 app.config["SESSION_TYPE"] = "filesystem"
@@ -47,5 +51,45 @@ def rps():
 
 @app.route('/merge', methods=["GET", "POST"])
 def merge():
-    session.clear()
-    return render_template("merge.html")
+    if request.method == "POST":
+        n = int(request.form["slider"])
+        if not isinstance(n, int):
+            flash("WRONG INPUT", "lost")
+            return redirect("/merge")
+        arr = random.randint(1, n, n)
+        st = time.time()
+        sorted = sort.insertsort(arr)
+        inserttime = time.time() - st
+
+        arr = random.randint(1, n, n)
+        st = time.time()
+        sorted = sort.mergesort(arr)
+        mergetime = time.time() - st
+
+        arr = random.randint(1, n, n)
+        st = time.time()
+        sorted = sort.select(arr)
+        selecttime = time.time() - st
+
+        arr = random.randint(1, n, n)
+        st = time.time()
+        sorted = sort.bubblesort(arr)
+        bubbletime = time.time() - st
+
+        arr = random.randint(1, n, n)
+        st = time.time()
+        sorted = sort.quicksort(arr, 0, len(arr) - 1)
+        quicktime = time.time() - st
+
+        algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
+
+        #algorithms = algorithms.sort(key = lambda x: x[1])
+        print(algorithms)
+        session['alorithms'] = algorithms
+        flash("SORTED", "won")
+        return redirect("/merge")
+    if not 'algorithms' in locals():
+        return render_template("merge.html")
+    else:
+        return render_template("merge.html", algorithms = session.get('algorithms'))
+    

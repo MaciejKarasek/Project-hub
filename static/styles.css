@@ -156,3 +156,24 @@ a:hover{
     display: inline-flex;
     align-content: center;
 }
+
+.slider{
+    -webkit-appearance: none;
+    width: 94%;
+    height:30px;
+    background-color: #111111;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background: #414141;
+    cursor: pointer;
+  }
+  .slider::-moz-range-thumb {
+    width: 30px;
+    height: 30px;
+    background: #414141;
+    cursor: pointer;
+  }

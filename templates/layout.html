@@ -23,6 +23,15 @@
           {% endwith %}
         {% block main %}{% endblock %}
         </main>
+        <script>
+          var slider = document.getElementById("numbers");
+          var output = document.getElementById("demo");
+          output.innerHTML = slider.value;
+          
+          slider.oninput = function() {
+            output.innerHTML = this.value;
+          }
+      </script>
     </body>
     <footer class = "footer">
       <a href="https://github.com/MaciejKarasek"><img src="/static/github.png" id="Github" style="height: 56px; width: 56px;"/> My GitHub profile</a>

@@ -1,6 +1,5 @@
 from numpy import random
 import time
-import math
 
 def mergesort(arr):
     if len(arr) > 1:
@@ -84,7 +83,7 @@ def select(arr):
 
 if __name__ == "__main__":
     arr = random.randint(1, 10000, 10000)
-    #arr = [5, 3, 4, 2, 1, 30, 65, 24, 63, 88, 535, 346, 346536]
+    arr = [4,7,3,1,8]
     print(arr)
     #quicksort(arr, 0, len(arr) - 1)
     sum = 0
@@ -94,5 +93,6 @@ if __name__ == "__main__":
         et = time.time()
         sum += et - st
     avgtime = sum / 5
+    print(arr)
     timee ="{:.3f}".format(avgtime) 
     print(timee)
