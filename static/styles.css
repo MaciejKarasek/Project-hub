@@ -177,3 +177,27 @@ a:hover{
     background: #414141;
     cursor: pointer;
   }
+
+  #submitbtn{
+    margin-top: 2%;
+    background-color: #111111;
+    color: antiquewhite;
+    height: 7%;
+    width: 7%;
+    font-size: x-large;
+    font-weight: bold;
+    outline-width: 0;
+  }
+
+  #submitbtnDisabled{
+    margin-top: 2%;
+    background-color: #111111;
+    height: 7%;
+    width: 7%;
+    font-size: x-large;
+    font-weight: bold;
+    outline-width: 0;
+    color:rgb(172, 171, 171);
+  }
+
+  .exp{visibility: hidden;}

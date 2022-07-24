@@ -24,10 +24,12 @@
     <div>
         <h2 id="demo" style="display:inline-block;"></h2> <h2 style="display:inline-block;">Numbers</h2>
     </div>
-    <form method="post" action="">
+    <form method="post" action="" id="id">
         <input type="range" min="2" max="10000" value="5000" name ='slider' class="slider" id="numbers">
         <br>
-        <input type="submit" value="SORT!">
+        <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">SORT!</button>
+        <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">SORT!</button>
+        <p class="exp">Please wait, this gonna take a while...</p>
     </form>
     {% if algorithms %}
     <table class="table table-dark">
