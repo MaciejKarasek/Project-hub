@@ -80,6 +80,8 @@ def sorting():
         st = time.time()
         sort.quicksort(arr, 0, len(arr) - 1)
         quicktime = time.time() - st
+        for i in sorted:
+            sor.append
         session['sorted'] = sorted
         session['unsorted'] = unsorted
         algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]

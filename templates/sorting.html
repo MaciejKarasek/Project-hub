@@ -45,12 +45,15 @@
                 {% endfor %}
         </tbody>
     </table>
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="unsorted" data-bs-toggle="modal" data-bs-target="#exampleModal">
         Unsorted values
+    </button>
+    <button type="button" class="unsorted" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+        Sorted values
     </button>      
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-sm">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Unsorted numbers</h5>
@@ -59,7 +62,25 @@
             <div class="modal-body">
               <table>
                 {% for number in unsorted %}
-                <tr><td>{{number}}</td></tr>
+                <p><tr>{{number}}</tr></p>
+                {% endfor %}
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Sorted numbers</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table>
+                {% for number in sorted %}
+                <p><tr>{{number}}</tr></p>
                 {% endfor %}
               </table>
             </div>

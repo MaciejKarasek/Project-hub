@@ -149,7 +149,7 @@ a:hover{
     box-shadow: 0 0 15px #ff0055;
     box-sizing:inherit;
     transition: 0.5s ease;
-    margin: 5px;
+    border-radius: 20px;
 }
 
 .index-menu{
@@ -187,6 +187,14 @@ a:hover{
     font-size: x-large;
     font-weight: bold;
     outline-width: 0;
+    transition: 0.25s ease;
+    border-radius: 10px;
+  }
+
+  #submitbtn:hover{
+    color:rgb(216, 203, 186);
+    background-color:#0a0a0a;
+    transition: 0.25s ease;
   }
 
   #submitbtnDisabled{
@@ -198,10 +206,30 @@ a:hover{
     font-weight: bold;
     outline-width: 0;
     color:rgb(172, 171, 171);
+    border-radius: 10px;
   }
 
   .exp{visibility: hidden;}
 
   .modal-content{
     background-color: rgb(33, 37, 41);
+  }
+
+  .unsorted{
+    margin: 1%;
+    background-color: #111111;
+    color: antiquewhite;
+    height: 7%;
+    width: 7%;
+    font-size: x-large;
+    font-weight: bold;
+    outline-width: 0;
+    transition: 0.25s ease;
+    border-radius: 10px;
+  }
+
+  .unsorted:hover{
+    color:rgb(216, 203, 186);
+    background-color:#0a0a0a;
+    transition: 0.25s ease;
   }
