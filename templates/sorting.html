@@ -27,14 +27,14 @@
     <div>
         <h2 id="demo" class="numbers" style="display:inline-block;"></h2> <h2 class="numbers" style="display:inline-block;">Numbers</h2>
     </div>
-    <form method="post" action="" id="id">
+    <form enctype="multipart/form-data" method="post" action="" id="id">
         <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
         <br>
           <div>
             <h2 class="desc">Or upload a csv file</h2>
           </div>
           <div class="mb-2">
-              <input autofocus class="fileinput" name="file" type="file">
+              <input class="fileinput" name="file" type="file">
           </div>
         <br>
         <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">SORT!</button>
