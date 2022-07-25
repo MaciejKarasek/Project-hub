@@ -21,12 +21,21 @@
         <div class="pick"><a class="pick option" href="/sorting">Sorting algorithms</a></div>
     </div>
     </div>
-
     <div>
-        <h2 id="demo" style="display:inline-block;"></h2> <h2 style="display:inline-block;">Numbers</h2>
+      <h2 class="desc">Generate random numbers</h2>
+    </div>
+    <div>
+        <h2 id="demo" class="numbers" style="display:inline-block;"></h2> <h2 class="numbers" style="display:inline-block;">Numbers</h2>
     </div>
     <form method="post" action="" id="id">
         <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
+        <br>
+          <div>
+            <h2 class="desc">Or upload a csv file</h2>
+          </div>
+          <div class="mb-2">
+              <input autofocus class="fileinput" name="file" type="file">
+          </div>
         <br>
         <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">SORT!</button>
         <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">SORT!</button>

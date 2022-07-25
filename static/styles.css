@@ -231,3 +231,17 @@ a:hover{
     background-color:#0a0a0a;
     transition: 0.25s ease;
   }
+
+  .fileinput{
+    vertical-align:middle; 
+    margin-top: 1%;
+    width: 20%;
+  }
+
+  .numbers{
+    color:rgb(214, 202, 185);
+  }
+
+  .desc{
+    font-weight: bold;
+  }
