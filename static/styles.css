@@ -138,15 +138,13 @@ a:hover{
 }
 
 .btn-index{
-    filter: blur(2px);
     box-shadow: 0 0 0 #000000;
     transition: 0.5s ease;
     margin: 5px;
 }
 
 .btn-index:hover{
-    filter: blur(0);
-    box-shadow: 0 0 15px #ff0055;
+    box-shadow: 0 0 15px #4c00ff;
     box-sizing:inherit;
     transition: 0.5s ease;
     border-radius: 20px;
