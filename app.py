@@ -4,12 +4,22 @@ from game import RPS
 from numpy import random
 import sort
 import time
+import os
+import csv
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = 'UPLOAD'
+ALLOWED_EXTENSIONS = {'csv'}
+
 
 app = Flask(__name__)
+app.config["SESSION_PERMANENT"] = False
 app.secret_key = 'aAbBcD'
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/', methods=["GET", "POST"])
 def index():
@@ -55,42 +65,99 @@ def rps():
 def sorting():
     if request.method == "POST":
         n = int(request.form["slider"])
-        if not isinstance(n, int):
-            flash("WRONG INPUT", "lost")
+
+        if 'file' not in request.files:
+            if not isinstance(n, int):
+                flash("WRONG INPUT", "lost")
+                return redirect("/sorting")
+            session['val'] = n
+            arr = random.randint(1, n, n)
+            unsorted = arr.copy()
+            st = time.time()
+            sorted = sort.insertsort(arr.copy())
+            inserttime = time.time() - st
+
+            st = time.time()
+            sorted = sort.mergesort(arr.copy())
+            mergetime = time.time() - st
+
+            st = time.time()
+            sorted = sort.select(arr.copy())
+            selecttime = time.time() - st
+
+            st = time.time()
+            sorted = sort.bubblesort(arr.copy())
+            bubbletime = time.time() - st
+
+            st = time.time()
+            sort.quicksort(arr, 0, len(arr) - 1)
+            quicktime = time.time() - st
+            session['sorted'] = sorted
+            session['unsorted'] = unsorted
+            algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
+
+            session['algorithms'] = algorithms
+            print(algorithms)
+            flash("SORTED", "won")
             return redirect("/sorting")
-        session['val'] = n
-        arr = random.randint(1, n, n)
-        unsorted = arr.copy()
-        st = time.time()
-        sorted = sort.insertsort(arr.copy())
-        inserttime = time.time() - st
+        else:
+            file = request.files['file']
+            # If the user does not select a file, the browser submits an
+            # empty file without a filename.
+            if file.filename == '':
+                flash('No selected file')
+                return redirect('/sorting')
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                file.save(path)
+                array = open(path)
+                csvreader = csv.reader(array)
+                next(csvreader)  # skip headers
+                arr = []
+                for row in csvreader:  # Read uploaded file
+                    arr.append([int(row)])
+                    if not row.isnumeric():
+                        flash('Number has to be integer', 'lost')
+                        return redirect('/sorting')
+                array.close()
+                session['val'] = len[arr]
 
-        st = time.time()
-        sorted = sort.mergesort(arr.copy())
-        mergetime = time.time() - st
+                unsorted = arr.copy()
+                st = time.time()
+                sorted = sort.insertsort(arr.copy())
+                inserttime = time.time() - st
 
-        st = time.time()
-        sorted = sort.select(arr.copy())
-        selecttime = time.time() - st
+                st = time.time()
+                sorted = sort.mergesort(arr.copy())
+                mergetime = time.time() - st
 
-        st = time.time()
-        sorted = sort.bubblesort(arr.copy())
-        bubbletime = time.time() - st
+                st = time.time()
+                sorted = sort.select(arr.copy())
+                selecttime = time.time() - st
 
-        st = time.time()
-        sort.quicksort(arr, 0, len(arr) - 1)
-        quicktime = time.time() - st
-        session['sorted'] = sorted
-        session['unsorted'] = unsorted
-        algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
+                st = time.time()
+                sorted = sort.bubblesort(arr.copy())
+                bubbletime = time.time() - st
 
-        session['algorithms'] = algorithms
-        print(algorithms)
-        flash("SORTED", "won")
-        return redirect("/sorting")
+                st = time.time()
+                sort.quicksort(arr, 0, len(arr) - 1)
+                quicktime = time.time() - st
+                session['sorted'] = sorted
+                session['unsorted'] = unsorted
+                algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
+
+                session['algorithms'] = algorithms
+                print(algorithms)
+                flash("SORTED", "won")
+                return redirect("/sorting")
     
     if session.get('algorithms'):
         return render_template("sorting.html", algorithms = session.get('algorithms'), val = session.get('val'), sorted = session.get('sorted'), unsorted = session.get('unsorted'))
     else:
         return render_template("sorting.html", val = 5000)
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
     
