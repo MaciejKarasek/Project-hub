@@ -30,17 +30,21 @@
     <form method="post" action="" id="id">
         <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
         <br>
-          <div>
-            <h2 class="desc">Or upload a csv file:</h2>
-          </div>
-          <div class="mb-2">
-              <input class="fileinput" name="file" type="file">
-          </div>
-        <br>
         <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">SORT!</button>
         <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">SORT!</button>
         <p class="exp">Please wait, this gonna take a while...</p>
     </form>
+        <br>
+          <div class="file-upload">
+            <h2 class="desc">Or upload a csv file:</h2>
+          </div>
+          <form method="post" action="" id="file-uploadd">
+          <div class="mb-2">
+              <input class="fileinput" name="file" type="file" id="file">
+          </div>
+          </form>
+        <br>
+        
     {% if algorithms %}
     <table class="table table-dark">
         <thead>
