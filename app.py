@@ -66,7 +66,7 @@ def sorting():
     if request.method == "POST":
         print('request.form: {}'.format(request.form.keys()))
         print('request.files: {}'.format(request.files.keys()))
-        if request.form['file']:
+        if request.files['file']:
             file = request.files['file']
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
