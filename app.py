@@ -66,7 +66,7 @@ def sorting():
     if request.method == "POST":
         print('request.form: {}'.format(request.form.keys()))
         print('request.files: {}'.format(request.files.keys()))
-        if request.files['file']:
+        if 'file' in request.files:
             file = request.files['file']
             if file and allowed_file(file.filename):
                 filename = secure_filename(file.filename)
@@ -116,6 +116,7 @@ def sorting():
                 flash("SORTED", "won")
                 return redirect("/sorting")
         else:
+            print(request.form.get("slider"))
             n = int(request.form["slider"])
             if not isinstance(n, int):
                 flash("WRONG INPUT", "lost")
