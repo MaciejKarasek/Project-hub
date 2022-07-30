@@ -74,13 +74,16 @@ def sorting():
                 csvreader = csv.reader(array)
                 arr = []
                 for row in csvreader:  # Read uploaded file
-                    print(row[0])
-                    arr.append([int(row[0])])
+                    #print(row[0])
+                    arr.append(int(row[0]))
                     if not row[0].isnumeric():
                         flash('Number has to be integer', 'lost')
                         return redirect('/sorting')
                 array.close()
-                session['val'] = len[arr]
+                arr=list(arr)
+                os.remove(path)
+                #print(arr)
+                session['val'] = len(arr)
 
                 unsorted = arr.copy()
                 st = time.time()
