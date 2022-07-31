@@ -46,6 +46,10 @@
       <script>
         document.getElementById("file").onchange = function() {
         document.getElementById("file-uploadd").submit();
+        document.getElementById('file').disabled = 'disabled';
+        var hid = document.getElementsByClassName("exp2");
+        if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
+                hid[0].style.visibility = "visible";
         }
       </script>
     </body>
