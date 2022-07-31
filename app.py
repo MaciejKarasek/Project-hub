@@ -110,7 +110,7 @@ def sorting():
                 session['sorted'] = sorted
                 session['unsorted'] = unsorted
                 algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
-
+                sortalgorithms(algorithms)
                 session['algorithms'] = algorithms
                 print(algorithms)
                 return redirect("/sorting")
@@ -145,7 +145,7 @@ def sorting():
             session['sorted'] = sorted
             session['unsorted'] = unsorted
             algorithms = [['Insert sort',round(inserttime,3)], ['Merge sort',round(mergetime,3)], ['Select sort',round(selecttime,3)], ['Bubble sort',round(bubbletime,3)], ['Quick sort',round(quicktime,3)]]
-
+            sortalgorithms(algorithms)
             session['algorithms'] = algorithms
             print(algorithms)
             return redirect("/sorting")
@@ -159,4 +159,11 @@ def sorting():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def sortalgorithms(arr):
+    for i in range(1,len(arr)):
+        for j in range(i):
+            if arr[i][1] < arr[j][1]:
+                arr[i], arr[j] = arr[j], arr[i]
+    return arr
     
