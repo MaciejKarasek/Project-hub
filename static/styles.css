@@ -177,7 +177,7 @@ a:hover{
   }
 
   #submitbtn{
-    margin-top: 2%;
+    margin-top: 1%;
     background-color: #111111;
     color: antiquewhite;
     height: 7%;
@@ -196,7 +196,7 @@ a:hover{
   }
 
   #submitbtnDisabled{
-    margin-top: 2%;
+    margin-top: 1%;
     background-color: #111111;
     height: 7%;
     width: 7%;
@@ -252,6 +252,7 @@ a:hover{
   }
 
   .desc{
+    margin-top: 0;
     font-weight: bold;
   }
 

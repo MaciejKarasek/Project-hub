@@ -40,6 +40,7 @@
             // Emulates jQuery $(element).is(':hidden');
             if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
                 hid[0].style.visibility = "visible";
+                document.getElementById("file").disabled = true;
           }
           }
       </script>
@@ -52,7 +53,8 @@
         if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
           hid[0].style.visibility = "visible";
         }
-        setTimeout(() => { document.getElementById("file-uploadd").submit(); }, 2000);
+        document.getElementById("file-uploadd").submit();
+        document.getElementById("file").disabled = true;
         }
       </script>
     </body>
