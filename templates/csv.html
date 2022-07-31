@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    PROJECTS
+{% endblock %}
+{% block head %}
+    <div id="menudiv">
+        <div id="headertext">CSV FILE GENERATOR
+        <button class="btnmenu btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" style="background: url(static/menu.png)"></button>
+        </div>
+    </div>
+{% endblock %}
+{% block main %}
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color:#212529;">
+        <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel"><a href="/">PROJECTS</a></h5>
+        <button type="button" class="btn-close text-reset btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+    <div class="offcanvas-body">
+        <div><a class="option" href="/rps">Rock Paper Scissors</a></div>
+        <div><a class="option" href="/sorting">Sorting algorithms</a></div>
+        <div class = pick><a class=" pick option" href="/csv">CSV file generator</a></div>
+    </div>
+    </div>
+
+    <div>
+        <h2 class="desc">How many numbers you want to generate:</h2>
+    </div>
+    <div>
+      <h2 id="demo" class="numbers" style="display:inline-block;"></h2> <h2 class="numbers" style="display:inline-block;">Numbers</h2>
+    </div>
+      <form method="post" action="" id="id">
+          <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
+          <br>
+          <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">GENERATE</button>
+          <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">GENERATE</button>
+          <p class="exp">Please wait, this gonna take a while...</p>
+      </form>
+{% endblock %}

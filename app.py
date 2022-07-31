@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, flash, session
+from flask import Flask, redirect, render_template, request, flash, session, send_file
 from flask_session import Session
 from game import RPS
 from numpy import random
@@ -115,7 +115,6 @@ def sorting():
                 print(algorithms)
                 return redirect("/sorting")
         else:
-            print(request.form.get("slider"))
             n = int(request.form["slider"])
             if not isinstance(n, int):
                 flash("WRONG INPUT", "lost")
@@ -155,6 +154,30 @@ def sorting():
         return render_template("sorting.html", algorithms = session.get('algorithms'), val = session.get('val'), sorted = session.get('sorted'), unsorted = session.get('unsorted'))
     else:
         return render_template("sorting.html", val = 5000)
+
+@app.route('/csv', methods=["GET", "POST"])
+def csvv():
+    if request.method == "POST":
+        n = int(request.form["slider"])
+        if not isinstance(n, int):
+            flash("WRONG INPUT", "lost")
+            return redirect("/sorting")
+        session['val'] = n
+        arr = random.randint(1, n, n)
+
+        with open('UPLOAD/output.csv', 'w', newline = '') as output:
+            writer = csv.writer(output)
+            for i in range(len(arr) - 1):
+                writer.writerow([arr[i]])
+            output.close()
+
+        return send_file('UPLOAD/output.csv', as_attachment=True)
+    
+    if session.get('val'):
+        x = session.get('val')
+        session.pop('val')
+        return render_template("csv.html", val = x)
+    return render_template("csv.html", val = 5000)
 
 def allowed_file(filename):
     return '.' in filename and \
