@@ -113,7 +113,6 @@ def sorting():
 
                 session['algorithms'] = algorithms
                 print(algorithms)
-                flash("SORTED", "won")
                 return redirect("/sorting")
         else:
             print(request.form.get("slider"))
@@ -149,7 +148,6 @@ def sorting():
 
             session['algorithms'] = algorithms
             print(algorithms)
-            flash("SORTED", "won")
             return redirect("/sorting")
         
     

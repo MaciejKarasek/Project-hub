@@ -2,3 +2,4 @@
 flask_session/*
 files/
 *.pyc
+__pycache__/*
