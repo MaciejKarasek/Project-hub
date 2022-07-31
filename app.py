@@ -120,7 +120,7 @@ def sorting():
                 flash("WRONG INPUT", "lost")
                 return redirect("/sorting")
             session['val'] = n
-            arr = random.randint(1, n, n)
+            arr = random.randint(1, n+1, n)
             unsorted = arr.copy()
             st = time.time()
             sorted = sort.insertsort(arr.copy())
@@ -163,11 +163,11 @@ def csvv():
             flash("WRONG INPUT", "lost")
             return redirect("/sorting")
         session['val'] = n
-        arr = random.randint(1, n, n)
+        arr = random.randint(1, n+1, n)
 
         with open('UPLOAD/output.csv', 'w', newline = '') as output:
             writer = csv.writer(output)
-            for i in range(len(arr) - 1):
+            for i in range(len(arr)):
                 writer.writerow([arr[i]])
             output.close()
 

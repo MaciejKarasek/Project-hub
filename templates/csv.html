@@ -32,8 +32,7 @@
       <form method="post" action="" id="id">
           <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
           <br>
-          <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">GENERATE</button>
-          <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">GENERATE</button>
-          <p class="exp">Please wait, this gonna take a while...</p>
+
+          <button type="submit" id="submitbtn">GENERATE</button>
       </form>
 {% endblock %}
