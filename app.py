@@ -6,7 +6,7 @@ import sort
 import time
 import os
 import csv
-from werkzeug import secure_filename
+from werkzeug.utils import secure_filename
 
 UPLOAD_FOLDER = 'UPLOAD'
 ALLOWED_EXTENSIONS = {'csv'}
