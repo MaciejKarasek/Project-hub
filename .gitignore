@@ -1,6 +1,1 @@
-
-flask_session/*
-files/
-*.pyc
-__pycache__/*
-UPLOAD/*
+__pycache__
