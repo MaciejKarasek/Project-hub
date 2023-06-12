@@ -56,7 +56,7 @@ def rps():
             flash(result, resulttxt)
             return redirect("/rps")
     else:
-        if not session.get('B'):
+        if not session.get('B') and not session.get('P'):
             session['B'] = 0
             session['P'] = 0
         return render_template("rps.html", bot = session.get('B'), player = session.get('P'))
