@@ -31,6 +31,7 @@
     <form method="post" action="" id="id">
         <input type="range" min="2" max="10000" value="{{ val }}" name ='slider' class="slider" id="numbers">
         <br>
+        <audio id="elevator" src="/static/elevator_music.mp3" loop></audio>
         <button type="button" id="submitbtnDisabled" disabled="disabled" value="SORT!" style="display:none;">SORT!</button>
         <button type="submit" id="submitbtn" onclick="this.style.display='none'; document.getElementById('submitbtnDisabled').style.display='inline'; display();">SORT!</button>
         <p class="exp">Please wait, this gonna take a while...</p>
