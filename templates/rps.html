@@ -13,6 +13,12 @@
 {% endblock %}
 
 {% block main %}
+    <script>
+        window.onload = (event) => {
+            var audio = document.getElementById("click");
+            audio.play();
+        };
+    </script>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="background-color:#212529;">
         <div class="offcanvas-header">
         <h5 id="offcanvasRightLabel"><a href="/">PROJECTS</a></h5>
@@ -29,10 +35,12 @@
             <div>Player: {{player}}</div>
             <div>Bot: {{bot}}</div>
         </div>
-        <form method="post">
-            <button type="submit" style="background: url(static/Rock.png)" name="button" value="R"></button>
-            <button type="submit" style="background: url(static/paper.png)" name="button" value="P"></button>
-            <button type="submit" style="background: url(static/scissors.png)" name="button" value="S"></button>
+        <audio id="click" src="/static/correct.mp3"></audio>
+        <form method="post" id="rps">
+            <button type="submit" style="background: url(static/Rock.png)" name="button" value="R" onclick="audio"></button>
+            <button type="submit" style="background: url(static/paper.png)" name="button" value="P" ></button>
+            <button type="submit" style="background: url(static/scissors.png)" name="button" value="S" ></button>
+            
         </form>
     </div>
     <br>
