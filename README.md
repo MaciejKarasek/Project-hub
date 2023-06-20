@@ -20,7 +20,7 @@ Download Python from [official Python site](https://www.python.org/downloads/win
 
 #### Clone the repository:
 ```bash
-    git clone https://github.com/MaciejKarasek/Project-hub.git
+$ git clone https://github.com/MaciejKarasek/Project-hub.git
 ```
 
 #### Install Python libaries:
