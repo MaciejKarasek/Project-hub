@@ -36,12 +36,13 @@
         <script>
           function display()
           {
-            //document.getElementById('oneclick').disabled = 'disabled';
             var hid = document.getElementsByClassName("exp");
             // Emulates jQuery $(element).is(':hidden');
+            // Disable button while calculating <sorting>
             if(hid[0].offsetWidth > 0 && hid[0].offsetHeight > 0) {
                 hid[0].style.visibility = "visible";
                 document.getElementById("file").disabled = true;
+                // Play sound while calculating
                 var audio = document.getElementById("elevator");
                 audio.volume = 0.1;
                 audio.play();
@@ -49,6 +50,8 @@
           }
       </script>
       <script>
+        //
+        // Disable button while calculating <sorting>
         document.getElementById("file").onchange = function() {
         var btn = document.getElementById("submitbtn");
         btn.style.display='none';
@@ -59,6 +62,7 @@
         }
         document.getElementById("file-uploadd").submit();
         document.getElementById("file").disabled = true;
+        // Play sound while calculating
         var audio = document.getElementById("elevator");
         audio.volume = 0.1;
         audio.play();

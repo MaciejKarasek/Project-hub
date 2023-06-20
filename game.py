@@ -1,6 +1,7 @@
 from random import choice
 
 def RPS(pchoice):
+    # Random choice for bot
     bchoice=choice(['R', 'P', 'S'])
     if pchoice == bchoice:
         return [2, bchoice]

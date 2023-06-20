@@ -1,6 +1,6 @@
 from numpy import random
-import time
 
+# Merge sort algorithm
 def mergesort(arr):
     if len(arr) > 1:
         m = len(arr)//2
@@ -34,6 +34,7 @@ def merge(one, two):
             two = two[1:]
     return array
 
+# Insertion sort algorithm
 def insertsort(arr):
     for i in range(1,len(arr)):
         for j in range(i):
@@ -41,6 +42,7 @@ def insertsort(arr):
                 arr[i], arr[j] = arr[j], arr[i]
     return arr
 
+# Bubble sort algorithm
 def bubblesort(arr):
     for i in range(len(arr)):
         for j in range(len(arr)-1):
@@ -48,6 +50,7 @@ def bubblesort(arr):
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr
 
+# Quick sort algorithm
 def quicksort(arr, low, high):
     if low < high:
 
@@ -69,6 +72,7 @@ def part(arr, low, high):
 
     return n + 1
 
+# Select sorting algorithm
 def select(arr):
     for i in range(len(arr) - 1):
         min = arr[i]
