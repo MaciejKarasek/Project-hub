@@ -203,3 +203,5 @@ def sortalgorithms(arr):
                 arr[i], arr[j] = arr[j], arr[i]
     return arr
     
+if __name__ == '__main__':
+    app.run()
