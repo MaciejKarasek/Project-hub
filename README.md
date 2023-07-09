@@ -33,6 +33,10 @@ Use this command and then open this site http://localhost:5000/
 ```bash
 .../Project-hub$ flask run
 ```
+or:
+```bash
+.../Project-hub$ python -m flask run
+```
 ## Files:
 * static/ - Contains files that are used for page style (images, mp3 files, styles.css)
 * templates/ - Contains flask .html templates
